@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pavan Yadav A | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #0b1020;
+      --card: rgba(255, 255, 255, 0.08);
+      --text: #f5f7ff;
+      --muted: #c7cbe1;
+      --accent: #7c4dff;
+      --accent2: #00d4ff;
+      --accent3: #ff4ecd;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(-45deg, #0b1020, #121a33, #0f1b2d, #1a1040);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+      opacity: 0.35;
+      animation: floatBlob 12s infinite ease-in-out;
+    }
+
+    .blob1 {
+      width: 300px;
+      height: 300px;
+      background: var(--accent);
+      top: 10%;
+      left: 5%;
+    }
+
+    .blob2 {
+      width: 280px;
+      height: 280px;
+      background: var(--accent2);
+      bottom: 10%;
+      right: 5%;
+      animation-delay: 3s;
+    }
+
+    .blob3 {
+      width: 240px;
+      height: 240px;
+      background: var(--accent3);
+      top: 45%;
+      left: 45%;
+      animation-delay: 6s;
+    }
+
+    @keyframes floatBlob {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-30px) translateX(20px); }
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      width: 100%;
+      max-width: 1150px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+    }
+
+    .hero-left {
+      padding: 40px;
+      animation: slideUp 1s ease forwards;
+    }
+
+    .hero-left h1 {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      margin-bottom: 15px;
+    }
+
+    .hero-left h1 span {
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-left p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+      max-width: 650px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent3));
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(124, 77, 255, 0.35);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-3px);
+    }
+
+    .hero-right {
+      padding: 30px;
+      text-align: center;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .profile-card {
+      padding: 35px 25px;
+      border-radius: 24px;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 10px 35px rgba(124, 77, 255, 0.35);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .profile-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .contact-links {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    nav {
+      position: sticky;
+      top: 12px;
+      z-index: 999;
+      width: fit-content;
+      margin: 0 auto 30px;
+      padding: 10px 16px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent2);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(1150px, calc(100% - 32px));
+      margin: auto;
+      padding-bottom: 60px;
+    }
+
+    section {
+      margin-bottom: 28px;
+      padding: 30px;
+      animation: slideUp 0.8s ease both;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: "";
+      position: absolute;
+      width: 60%;
+      height: 4px;
+      left: 0;
+      bottom: -6px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card-item {
+      padding: 22px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.20);
+    }
+
+    .card-item h3 {
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .card-item p, .card-item li {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    ul.styled {
+      padding-left: 18px;
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .skill-pill {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(124,77,255,0.2), rgba(0,212,255,0.2));
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .skill-pill:hover {
+      transform: scale(1.07);
+      background: linear-gradient(135deg, rgba(124,77,255,0.35), rgba(255,78,205,0.25));
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(var(--accent2), var(--accent3));
+      border-radius: 10px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 7px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 5px rgba(255,255,255,0.04);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      font-size: 0.92rem;
+      z-index: 1;
+      position: relative;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left h1 {
+        font-size: 2.5rem;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        width: calc(100% - 32px);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-left, .hero-right, section {
+        padding: 22px;
+      }
+
+      .hero-left h1 {
+        font-size: 2rem;
+      }
+
+      .avatar {
+        width: 110px;
+        height: 110px;
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <header>
+    <div class="hero">
+      <div class="hero-left glass">
+        <h1>Hello, I'm <span>Pavan Yadav A</span></h1>
+        <p>
+          A passionate engineering graduate and DFCC Developer with hands-on experience in
+          ADA programming, testing procedures, and digital module validation. I believe that
+          “There is nothing impossible” and always work with dedication, consistency, and
+          modern technology to solve problems in an optimized way.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Contact Me</a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
+        </div>
+      </div>
+
+      <div class="hero-right glass">
+        <div class="profile-card">
+          <div class="avatar">PY</div>
+          <h3>Pavan Yadav A</h3>
+          <p>DFCC Developer | Information Science Engineer</p>
+          <div class="contact-links">
+            <span>📞 +91-9606294256</span>
+            <span>✉️ 1sp20is011@gmail.com</span>
+            <span>📍 Bengaluru, India</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="glass">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="about" class="glass">
+      <h2>About Me</h2>
+      <div class="card-item">
+        <p>
+          I am an Information Science Engineering graduate with strong interest in software development,
+          testing, and advanced technologies. I am currently working as a contract DFCC Developer for
+          PBM House Keeping, deputed to the office of ADE, DRDO, Bangalore. My work includes ADA programming,
+          test procedure preparation, and LRU-level testing in Digital Flight Control Computer systems.
+        </p>
+      </div>
+    </section>
+
+    <section id="experience" class="glass">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item card-item">
+          <h3>Contract DFCC Developer</h3>
+          <p><strong>PBM House Keeping – Deputed to ADE, DRDO, Bangalore</strong></p>
+          <p>June 2024 – Present</p>
+          <ul class="styled">
+            <li>Developing DFCC using ADA programming.</li>
+            <li>Creating Acceptance Test Procedure and Functional Test Procedure documents.</li>
+            <li>Hands-on experience in LRU level testing.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="glass">
+      <h2>Skills</h2>
+      <div class="skills-wrap">
+        <div class="skill-pill">Java</div>
+        <div class="skill-pill">C++</div>
+        <div class="skill-pill">C</div>
+        <div class="skill-pill">ADA Programming</div>
+        <div class="skill-pill">MySQL</div>
+        <div class="skill-pill">Test Case Writing</div>
+        <div class="skill-pill">Test Plan Execution</div>
+        <div class="skill-pill">Testing Procedures</div>
+        <div class="skill-pill">SDLC Testing</div>
+        <div class="skill-pill">LRU Level Testing</div>
+      </div>
+    </section>
+
+    <section id="projects" class="glass">
+      <h2>Projects</h2>
+      <div class="grid-2">
+        <div class="card-item">
+          <h3>Digital Flight Control Computer</h3>
+          <p>
+            Worked on DFCC development using ADA programming, including testing support,
+            procedure documentation, and validation activities for digital modules.
+          </p>
+        </div>
+
+        <div class="card-item">
+          <h3>Enhancing Human Activity Recognition Through a Fusion of Hybrid Feature and Transformer Model</h3>
+          <p>
+            Major project focused on improving human activity recognition using advanced
+            feature fusion and transformer-based learning models.
+          </p>
+        </div>
+
+        <div class="card-item">
+          <h3>Blood Bank Management</h3>
+          <p>
+            A mobile application developed as a mini-project to manage blood donor and
+            receiver information efficiently.
+          </p>
+        </div>
+
+        <div class="card-item">
+          <h3>Men Saloon Managements</h3>
+          <p>
+            DBMS-based mini project for managing salon operations, customer records,
+            and services.
+          </p>
+        </div>
+
+        <div class="card-item">
+          <h3>Voter ID Management</h3>
+          <p>
+            File structure mini project designed to maintain and manage voter ID
+            information systematically.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="glass">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="timeline-item card-item">
+          <h3>Bachelor of Engineering – Information Science Engineering</h3>
+          <p>SEA College of Engineering and Technology, Bengaluru</p>
+          <p>VTU, Belagavi | 61%</p>
+        </div>
+
+        <div class="timeline-item card-item">
+          <h3>Pre-University College</h3>
+          <p>Swamy Vivekananda PU College</p>
+          <p>68%</p>
+        </div>
+
+        <div class="timeline-item card-item">
+          <h3>Class X</h3>
+          <p>Sterling English School</p>
+          <p>86%</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" class="glass">
+      <h2>Achievements</h2>
+      <div class="grid-2">
+        <div class="card-item">
+          <h3>National Level Taekwondo - 3rd Place</h3>
+          <p>Ongole, Andhra Pradesh (2018)</p>
+        </div>
+        <div class="card-item">
+          <h3>National Level Taekwondo - 1st Place</h3>
+          <p>Panaji, Goa (2019)</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="glass">
+      <h2>Contact</h2>
+      <div class="card-item">
+        <p><strong>Name:</strong> Pavan Yadav A</p>
+        <p><strong>Phone:</strong> +91-9606294256</p>
+        <p><strong>Email:</strong> 1sp20is011@gmail.com</p>
+        <p><strong>Location:</strong> Bengaluru, India</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Pavan Yadav A | Designed with modern aesthetic animation
+  </footer>
+</body>
+</html>
